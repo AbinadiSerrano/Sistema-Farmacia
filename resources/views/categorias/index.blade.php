@@ -8,7 +8,7 @@
         <!-- Page Heading  -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Categorias</h1>
-            <a  class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"  class="dropdown-item" data-toggle="modal" data-target="#nuevoModal" href="" ><i
+            <a  class=" btn btn-sm btn-primary shadow-sm"  class="dropdown-item" data-toggle="modal" data-target="#nuevoModal" href="" ><i
                     class="fas fa-solid fa-plus " ></i> Nuevo</a>
         </div>
         <!-- nuevo Modal-->

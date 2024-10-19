@@ -19,6 +19,12 @@
         var errorIndicacionesm = document.getElementById('indicacionesm');
         var errorLaboratorio_idm = document.getElementById('laboratorio_idm');
         var errorPresentacion_idm = document.getElementById('presentacion_idm');
+        var errorNombrepro = document.getElementById('nombrepro');
+        var errorPaispro = document.getElementById('paispro');
+        var errorCiudadpro = document.getElementById('ciudadpro');
+        var errorDireccionpro = document.getElementById('direccionpro');
+        var errorCorreopro = document.getElementById('correopro');
+        var errorTelefonopro = document.getElementById('telefonopro');
         // CATEGORIA
         if (errorNombrec) {
             // Establece un temporizador de 5 segundos
@@ -150,6 +156,50 @@
             setTimeout(function() {
                 // Oculta el mensaje de error
                 errorPresentacion_idm.style.display = 'none';
+            }, 5000); // 5000 milisegundos = 5 segundos
+        }
+          //PROVEEDORES
+          if (errorNombrepro) {
+            // Establece un temporizador de 5 segundos
+            setTimeout(function() {
+                // Oculta el mensaje de error
+                errorNombrepro.style.display = 'none';
+            }, 5000); // 5000 milisegundos = 5 segundos
+        }
+        if (errorPaispro) {
+            // Establece un temporizador de 5 segundos
+            setTimeout(function() {
+                // Oculta el mensaje de error
+                errorPaisl.style.display = 'none';
+            }, 5000); // 5000 milisegundos = 5 segundos
+        }
+
+        if (errorCiudadpro) {
+            // Establece un temporizador de 5 segundos
+            setTimeout(function() {
+                // Oculta el mensaje de error
+                errorCiudadl.style.display = 'none';
+            }, 5000); // 5000 milisegundos = 5 segundos
+        }
+        if (errorDireccionpro) {
+            // Establece un temporizador de 5 segundos
+            setTimeout(function() {
+                // Oculta el mensaje de error
+                errorDireccionpro.style.display = 'none';
+            }, 5000); // 5000 milisegundos = 5 segundos
+        }
+        if (errorCorreopro) {
+            // Establece un temporizador de 5 segundos
+            setTimeout(function() {
+                // Oculta el mensaje de error
+                errorCorreopro.style.display = 'none';
+            }, 5000); // 5000 milisegundos = 5 segundos
+        }
+        if (errorTelefonopro) {
+            // Establece un temporizador de 5 segundos
+            setTimeout(function() {
+                // Oculta el mensaje de error
+                errorTelefonopro.style.display = 'none';
             }, 5000); // 5000 milisegundos = 5 segundos
         }
 

@@ -65,6 +65,21 @@
                     </div>
                 </div>
             </li>
+            <!-- Nav Item - compras  Collapse Menu para crear mas collapse solo cambio el tow por el three-->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+                    aria-expanded="true" aria-controls="collapseThree">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Compras</span>
+                </a>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        
+                        <a class="collapse-item" href="{{-- - --}}">Compra</a>
+                        <a class="collapse-item" href="{{route('proveedores.index')}}">Proveedor</a>
+                    </div>
+                </div>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{route('laboratorios.index')}}">
                     <i class="fas fa-fw fa-table"></i>

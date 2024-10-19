@@ -9,7 +9,7 @@ class Medicamento extends Model
 {
     use HasFactory;
 
-    protected $fillable=['nombre','precio','fecha_vencimiento','indicaciones','laboratorio_id','presentacion_id'];
+    protected $fillable=['nombre','precio','fecha_vencimiento','imagen','indicaciones','laboratorio_id','presentacion_id'];
 
     //relaciones con laboratorio
     public function laboratorios(){

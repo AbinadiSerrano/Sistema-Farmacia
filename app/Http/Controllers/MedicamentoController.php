@@ -7,6 +7,7 @@ use App\Models\Laboratorio;
 use App\Models\Medicamento;
 use App\Models\Presentacione;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 
 class MedicamentoController extends Controller
 {
@@ -41,12 +42,19 @@ class MedicamentoController extends Controller
         $medicamentos->nombre = $request->get('nombre');
         $medicamentos->precio = $request->get('precio');
         $medicamentos->fecha_vencimiento = $request->get('fecha_vencimiento');
+         // Asegúrate de que se almacene correctamente
+        if ($request->hasFile('imagen')) {
+            $medicamentos->imagen = $request->file('imagen')->store('img', 'public'); // Guarda en 'storage/app/public/img'
+            
+        }
+        
         $medicamentos->indicaciones = $request->get('indicaciones');
         $medicamentos->laboratorio_id = $request->get('laboratorio_id');
         $medicamentos->presentacion_id = $request->get('presentacion_id');
         $medicamentos->save();
-       // dump($presentaciones);
         
+       // dump($presentaciones);
+       
         notify()->success('Medicamento Creado Correctamente', 'LISTO');
         return Redirect::route('medicamentos.index');
     }
@@ -54,9 +62,12 @@ class MedicamentoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Medicamento $medicamento)
-    {
-        //
+    public function show($id)
+    { ///mostrar imagen en pantalla completa
+        $medicamento = Medicamento::find($id);
+        $abrirImagen = storage_path("app/public/". $medicamento->imagen);
+        return response()->file($abrirImagen);
+         
     }
 
     /**
@@ -80,6 +91,20 @@ class MedicamentoController extends Controller
         $medicamento->nombre = $request->get('nombre');
         $medicamento->precio = $request->get('precio');
         $medicamento->fecha_vencimiento = $request->get('fecha_vencimiento');
+         // Asegúrate de que se almacene correctamente
+         if ($request->hasFile('imagen')) {
+            
+            //eliminar la imagen anterior y guardar la nueva 
+            if($medicamento->imagen != ''){
+                $oldImagePath = storage_path('app/public/' . $medicamento->imagen);
+                
+                if (file_exists($oldImagePath)){
+                    unlink($oldImagePath);
+                }
+            }
+            // Guarda en 'storage/app/public/img'
+            $medicamento->imagen = $request->file('imagen')->store('img', 'public');
+        }
         $medicamento->indicaciones = $request->get('indicaciones');
         $medicamento->laboratorio_id = $request->get('laboratorio_id');
         $medicamento->presentacion_id = $request->get('presentacion_id');

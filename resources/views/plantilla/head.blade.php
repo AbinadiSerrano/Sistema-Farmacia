@@ -20,7 +20,7 @@
       
     <!-- Custom styles for this template-->
     <link href="{!!asset ('css/sb-admin-2.min.css" rel="stylesheet')!!}">
-    <link href="{!!asset ('css/buttonNuevo.css" rel="stylesheet')!!}">
+    <link href="{!!asset ('css/Nuevo.css" rel="stylesheet')!!}">
     <!-- datatables-->
     <link href="{!!asset ('vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet')!!}">
     <link rel="stylesheet" href="{!!asset ('https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css') !!}">

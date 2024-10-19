@@ -43,6 +43,10 @@
                                                      {{ $errors->first('fecha_vencimiento') }}
                                                  </div>
                                          @endif
+
+                                    <span class="input-group-text"><i class="fas fa-solid fa-image"></i><strong style="margin-left: 5px;">Imagen</strong></span>
+                                    <input id="imagen" name="imagen" type="file" class="form-control"accept="image/*" value="{{ old('medicamento', $medicamento?->imagen)}}"alt="{{ $medicamento->nombre }}">
+                                    
                                     <label for="indicaciones" class="form-label"><strong>Indicaciones</strong></label>
                                     <textarea id="indicaciones"type="textarea" name="indicaciones" class="form-control" value="{{ old('medicamento', $medicamento?->indicaciones) }}" style="max-width: 500px;"></textarea>
                                                       <!-- Mensaje de error para 'nombre' -->

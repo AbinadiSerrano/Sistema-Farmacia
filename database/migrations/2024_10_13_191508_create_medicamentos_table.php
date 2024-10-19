@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->decimal('precio', 8, 2);
             $table->date('fecha_vencimiento');
+            $table->string('imagen')->nullable();
             $table->string('indicaciones',500)->nullable();
             $table->integer('estado')->default(1);
             $table->foreignId('laboratorio_id')->constrained('laboratorios')->cascadeOnUpdate();

@@ -8,7 +8,7 @@
         <!-- Page Heading  -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Medicamentos</h1>
-            <a  class=" d-none d-sm-inline-block  btn btn-sm btn-primary shadow-sm "   class="dropdown-item" data-toggle="modal" data-target="#nuevoModal" href="" ><i
+            <a  class="   btn btn-sm btn-primary shadow-sm "   class="dropdown-item" data-toggle="modal" data-target="#nuevoModal" href="" ><i
                     class="fas fa-solid fa-plus " ></i> Nuevo</a>
         </div>
         <!-- nuevo Modal-->
@@ -19,7 +19,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Crear Medicamento</h5>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('medicamentos.store') }}" method="POST">
+                    <form action="{{ route('medicamentos.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="modal-body">
                             <label for="nombre" class="form-label">Nombre</label>
@@ -32,6 +32,10 @@
                         <div class="modal-body">
                             <label for="fecha_vencimiento" class="form-label">Fecha Vencimiento</label>
                             <input id="fecha_vencimiento" name="fecha_vencimiento" type="date" class="form-control">
+                        </div>
+                        <div class="modal-body">
+                            <span class="input-group-text"><i class="fas fa-solid fa-image"></i><strong style="margin-left: 5px;">Imagen</strong></span>
+                            <input id="imagen" name="imagen" type="file" class="form-control"accept="image/*">
                         </div>
                         <div class="modal-body">
                             <label for="indicaciones" class="form-label">Indicaciones</label>
@@ -83,7 +87,7 @@
  <!-- Mensaje de error para 'nombre' -->
  @if ($errors->has('fecha_vencimiento'))
     <div id="fecha_vencimientom"class="alert alert-danger">
-        {{ $errors->first('nombre') }}
+        {{ $errors->first('fecha_vencimiento') }}
     </div>
 @endif
 <!-- Mensaje de error para 'fecha vencimiento' -->
@@ -104,7 +108,9 @@
         {{ $errors->first('presentacion_id') }}
     </div>
 @endif
-
+@php
+     use Illuminate\Support\Facades\Storage;
+@endphp
 <div class="container-fluid">
     <div class="card shadow mb-4">
          <div class="card-body">
@@ -115,7 +121,7 @@
                             <th class="text-center">Nombre</th>
                             <th class="text-center" >Precio</th>
                             <th class="text-center" >Fecha Vencimiento</th>
-                            <th class="text-center">Indicaciones</th>
+                            <th class="text-center">Imagen</th>
                             <th class="text-center" >Laboratorio</th>
                             <th class="text-center" >Presentacion</th>
                             <th></th>
@@ -127,7 +133,10 @@
                                 <td class="text-center">{{ $medicamento-> nombre}}</td>
                                 <td class="text-center">{{ $medicamento-> precio}}</td>
                                 <td class="text-center">{{ $medicamento-> fecha_vencimiento}}</td>
-                                <td class="text-center">{{ $medicamento-> indicaciones}}</td>
+                                <td class="text-center">
+                                     <img class="img-fluid" src="{{ asset('storage/' . $medicamento->imagen) }}" style="max-width: 100px; height: 150px;border-radius: 5px;object-fit: cover;">
+                                </td>  
+                                
                                 <td class="text-center">{{ $medicamento->laboratorios->nombre}}</td>
                                 <td class="text-center">{{ $medicamento->presentaciones->nombre}}</td>
                                 <td >
@@ -204,6 +213,12 @@
                                                                 <div style="text-align: left;">
                                                                     <strong>ESTADO:</strong>
                                                                     {{ $medicamento->estado }}
+                                                                </div>
+
+                                                                <div style="text-align: left;">
+                                                                    <strong>IMAGEN:</strong>
+                                                                    <img class="img-fluid" src="{{ asset('storage/' . $medicamento->imagen) }}" style="max-width: 100%; height: 150px;border-radius: 5px;object-fit: cover;">
+                                                                    <a href="{{route('medicamentos.show',$medicamento->id)}}">Ver Imagen</a>
                                                                 </div>
 
                                                                 <div class="modal-footer">
